@@ -30,9 +30,44 @@
             icon: 'manager-o'
           },
           {
-            url: '/workbench/corp-manage',
+            url: '/workbench/banchuan-manage',
             title: '板川产品',
             icon: 'apps-o'
+          },
+          {
+            url: '/workbench/selfrun-manage',
+            title: '自营产品',
+            icon: 'apps-o'
+          },
+          {
+            url: '/workbench/order-manage',
+            title: '订单管理',
+            icon: 'apps-o'
+          },
+          {
+            url: '/workbench/prepay-order',
+            title: '预付订单',
+            icon: 'apps-o'
+          },
+          {
+            url: '/workbench/case-manage',
+            title: '案例管理',
+            icon: 'newspaper-o'
+          },
+          {
+            url: '/workbench/cashout',
+            title: '佣金提现',
+            icon: 'newspaper-o'
+          },
+          {
+            url: '/workbench/turnover',
+            title: '营业额',
+            icon: 'newspaper-o'
+          },
+          {
+            url: '/workbench/radar',
+            title: '天眼雷达',
+            icon: 'aim'
           },
         ]
       }

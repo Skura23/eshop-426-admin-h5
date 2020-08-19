@@ -3,8 +3,13 @@ const devBaseUrl = 'http://crm.metujia.com';
 const curBaseUrl = devBaseUrl || devProdUrl;
 
 const loginBaseUrl = curBaseUrl;
-const apiBaseUrl = curBaseUrl+'/api';
+const apiBaseUrl = curBaseUrl + '/api';
 
-export default {loginBaseUrl, apiBaseUrl, curBaseUrl}
+let userInfo = {}
 
-
+export default {
+  loginBaseUrl,
+  apiBaseUrl,
+  curBaseUrl,
+  userInfo
+}

@@ -18,23 +18,35 @@
 .bb {
   border-bottom: 1px solid #ececec;
 }
+.bt {
+  border-top: 1px solid #ececec;
+}
 
 .mt {
-  margin-top: 20px;
-}
-.mt10 {
-  margin-top: 10px;
+  margin-top: 5vw;
 }
 
+.mt10 {
+  margin-top: 2vw;
+}
+.mt5 {
+  margin-top: 1.3vw;
+}
 .ml {
   margin-left: 20px;
 }
+
 .ml10 {
-  margin-left: 10px;
+  margin-left: 2.6vw;
 }
+.ml5 {
+  margin-left: 1.3vw;
+}
+
 .mr {
   margin-right: 20px;
 }
+
 .mr10 {
   margin-right: 10px;
 }
@@ -89,7 +101,7 @@
 
 .b-b {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .bold {
@@ -149,6 +161,10 @@
   font-size: 18px;
 }
 
+.flex{
+  display: flex;
+}
+
 .fl {
   float: left;
 }
@@ -167,6 +183,17 @@
 
 .clearfix {
   zoom: 1;
+}
+
+/* 内容竖直居中(比如文字等) */
+.cont-v-c {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.u-box-s {
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 }
 
 /* // 灰色半透明遮罩 */
@@ -199,10 +226,114 @@
 // #region app utils
 $cl-blue: #447ABF;
 
-.cl-blue{
-  color: $cl-blue;
+.font10 {
+  font-size: 2.5vw;
 }
 
+.font12 {
+  font-size: 3vw;
+}
+
+.font14 {
+  font-size: 3.5vw;
+}
+
+.font16 {
+  font-size: 4vw;
+}
+
+.font18 {
+  font-size: 4.5vw;
+}
+
+.font20 {
+  font-size: 5vw;
+}
+
+.bor99 {
+  border-radius: 99px;
+}
+.borr{
+  border-radius: 1.3vw;
+}
+.cl-blue {
+  color: $cl-blue;
+}
+.cl-gray{
+  color: #888888;
+}
+
+.bac-whi {
+  background-color: #fff;
+}
+
+.m-card {
+  background-color: #fff;
+  width: 94vw;
+  margin: 0 auto;
+  border-radius: 2.3vw;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.m-postcard {
+  padding: 3.6vw 4.1vw;
+  padding-bottom: 0;
+  background-color: #fff;
+
+  .van-icon {
+    vertical-align: bottom;
+    font-size: 4vw;
+  }
+
+  ._tit {
+    ._img {
+      vertical-align: middle;
+    }
+  }
+
+  ._cont {
+    margin-top: 3.7vw;
+
+    ._1 {
+      margin-top: 3.7vw;
+
+    }
+
+    ._2 {
+      margin-top: 3.2vw;
+
+      ._img {
+        border: 1px solid #fff;
+      }
+    }
+  }
+
+  ._btns {
+    ._row {
+      height: 12vw;
+      align-items: center;
+      .van-col {
+      }
+    }
+
+    border-top: 1px solid #f1f1f1;
+
+  }
+}
+
+.u-btn {
+  border: 1px solid #F90253;
+  display: inline-flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1.3vw 3.7vw;
+  border-radius: 9999px;
+  text-align: center;
+}
+.btn-blue{
+  background-color: $cl-blue;
+}
 // #endregion app utils
 
 /* #endregion */

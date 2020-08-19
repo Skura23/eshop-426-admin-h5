@@ -1,33 +1,50 @@
 @import './variables.scss';
 @import './mixin.scss';
- 
+
 html,
-body
-.app {
+body .app {
   color: #333333;
   font-family: Arial, Helvetica, 'STHeiti STXihei', 'Microsoft YaHei', Tohoma, sans-serif;
-  background-color: $background-color;
+  // background-color: $background-color;
+  min-height: 100vh;
 }
- 
-.app-container{
-  padding-bottom:50px;
+body{
+  
+}
+html {
+  min-height: 100%;
+  background-color: #F3F3F3;
+}
 
+p{
+  margin: 0;
+}
+a{
+  color:#333;
+}
+
+.app-container {
+  padding-bottom: 70px;
+  min-height: 100vh;
 }
 
 
 // #region overrides
-.app{
-  .van-nav-bar{
+.app {
+  .van-nav-bar {
     background-color: $cl-blue;
   }
-  .van-nav-bar__title{
+
+  .van-nav-bar__title {
     color: #fff;
   }
-  .van-nav-bar .van-icon{
+  .van-nav-bar__right {
+    color: #fff;
+  }
+
+  .van-nav-bar .van-icon {
     color: #fff;
   }
 }
+
 // #endregion overrides
-
-
-

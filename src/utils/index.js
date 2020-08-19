@@ -1,6 +1,12 @@
 /**
  * Created by PanJiaChen on 16/11/18.
  */
+import {
+  Toast
+} from 'vant';
+import _ from "lodash";
+import router from '../router'
+
 
 /**
  * Parse the time to string
@@ -8,7 +14,7 @@
  * @param {string} cFormat
  * @returns {string}
  */
-export function parseTime(time, cFormat) {
+ function parseTime(time, cFormat) {
   if (arguments.length === 0) {
     return null
   }
@@ -37,7 +43,9 @@ export function parseTime(time, cFormat) {
   const time_str = format.replace(/{(y|m|d|h|i|s|a)+}/g, (result, key) => {
     let value = formatObj[key]
     // Note: getDay() returns 0 on Sunday
-    if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][value ] }
+    if (key === 'a') {
+      return ['日', '一', '二', '三', '四', '五', '六'][value]
+    }
     if (result.length > 0 && value < 10) {
       value = '0' + value
     }
@@ -46,12 +54,40 @@ export function parseTime(time, cFormat) {
   return time_str
 }
 
+// timestamp to 2018-05-26 14:22:05
+function getFormattedDate(value, onlydate) {
+  var date 
+  if (value) {
+    date = new Date(value*1000);
+  } else {
+    date = new Date()
+  }
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+  var hour = date.getHours();
+  var min = date.getMinutes();
+  var sec = date.getSeconds();
+  month = (month < 10 ? '0' : '') + month;
+  day = (day < 10 ? '0' : '') + day;
+  hour = (hour < 10 ? '0' : '') + hour;
+  min = (min < 10 ? '0' : '') + min;
+  // sec = (sec < 10 ? '0' : '') + sec;
+  var str = date.getFullYear() + '-' + month + '-' + day + ' ' + hour + ':' + min
+  //  + ':' + sec;
+  if (onlydate) {
+    str = date.getFullYear() + '-' + month + '-' + day
+  }
+  /* alert(str); */
+  // 格式: 2018-05-26_14:22:05
+  return str;
+}
+
 /**
  * @param {number} time
  * @param {string} option
  * @returns {string}
  */
-export function formatTime(time, option) {
+ function formatTime(time, option) {
   if (('' + time).length === 10) {
     time = parseInt(time) * 1000
   } else {
@@ -89,22 +125,66 @@ export function formatTime(time, option) {
   }
 }
 
+function jumpTo(url){
+  router.push(url)
+}
+
+
 /**
  * @param {string} url
  * @returns {Object}
  */
-export function param2Obj(url) {
+ function param2Obj(url) {
   const search = url.split('?')[1]
   if (!search) {
     return {}
   }
   return JSON.parse(
     '{"' +
-      decodeURIComponent(search)
-        .replace(/"/g, '\\"')
-        .replace(/&/g, '","')
-        .replace(/=/g, '":"')
-        .replace(/\+/g, ' ') +
-      '"}'
+    decodeURIComponent(search)
+    .replace(/"/g, '\\"')
+    .replace(/&/g, '","')
+    .replace(/=/g, '":"')
+    .replace(/\+/g, ' ') +
+    '"}'
   )
 }
+
+
+
+function editCb(res, cb) {
+  if (res.code == 9999) {
+    Toast({
+      message: res.info,
+      onClose() {
+        cb && cb()
+      },
+    })
+  } else {
+    Toast({
+      message: res.info,
+    })
+  }
+}
+
+function renameKeyName(obj, oldName, newName) {
+  const clone = _.cloneDeep(obj);
+  const keyVal = clone[oldName];
+
+  delete clone[oldName];
+  clone[newName] = keyVal;
+
+  return clone;
+}
+
+let utils = {
+  parseTime,
+  formatTime,
+  param2Obj,
+  editCb,
+  renameKeyName,
+  jumpTo,
+  getFormattedDate
+}
+
+export default utils;

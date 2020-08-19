@@ -1,30 +1,41 @@
 <!-- home -->
 <template>
-  <div class="app-container">
-    
+  <div class="app-container page-">
+
   </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
+  import globals from '@/utils/globals' // get token from cookie
+  import utils from '@/utils/index' // get token from cookie
 
-    }
-      
-  },
+  import api from '@/api/api'
+  import {
+    Toast
+  } from 'vant';
 
-  computed: {
-  },
+  export default {
+    data() {
+      return {
 
-  mounted() {
-  },
+      }
 
-  methods: {}
-}
+    },
+
+    computed: {},
+    created() {
+
+    },
+    mounted() {},
+
+    methods: {}
+  }
 </script>
-<style lang="scss" scoped>
-.app-container {
 
-}
+
+<style
+  lang="scss"
+  scoped
+>
+  .app-container {}
 </style>
