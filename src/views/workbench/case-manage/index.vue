@@ -110,7 +110,7 @@
     data() {
       return {
         comment: '',
-        tabList: [],
+        tabList: [{class_name:'全部'}],
         keyword: '',
         dataList: [],
         active: 0,

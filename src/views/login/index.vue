@@ -6,7 +6,7 @@
         <van-cell-group>
           <van-field
             v-model="d_form.tele"
-            placeholder="请输入手机号"
+            placeholder="请输入账号"
           />
         </van-cell-group>
       </div>
@@ -36,7 +36,7 @@
           v-show="d_form.read"
           alt
         >
-        <span style="opacity: 0.5;">&nbsp;&nbsp; 我已阅读并接受</span>服务条款
+        <!-- <span style="opacity: 0.5;">&nbsp;&nbsp; 我已阅读并接受</span>服务条款 -->
         <span
           class="ab _mask"
           @click="toggleRead"

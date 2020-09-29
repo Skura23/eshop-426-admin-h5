@@ -9,7 +9,7 @@
         <span class="font20">
           12.56
         </span>
-        <span class="cl-blue" @click="$router.push()">
+        <span class="cl-blue" @click="$router.push('/workbench/cashout/detail')">
           收支明细
         </span>
       </div>

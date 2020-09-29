@@ -65,10 +65,15 @@
             icon: 'newspaper-o'
           },
           {
-            url: '/workbench/radar',
-            title: '天眼雷达',
-            icon: 'aim'
+            url: '/workbench/afterSale',
+            title: '售后管理',
+            icon: 'newspaper-o'
           },
+          // {
+          //   url: '/workbench/radar',
+          //   title: '天眼雷达',
+          //   icon: 'aim'
+          // },
         ]
       }
 

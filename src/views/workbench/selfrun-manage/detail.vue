@@ -63,39 +63,39 @@
             </div>
             <div v-show="temp.is_group==1">
               <div
-                class="i-b"
+                class="i-b mt10"
                 style="width:300px"
               >
+                <div class="">拼团价格(元):</div>
                 <el-input
-                  placeholder="请输入内容"
+                  placeholder=""
                   v-model="temp.group_price"
+                  class="_w200"
                 >
-                  <template slot="prepend">拼团价格</template>
-                  <template slot="append">元</template>
                 </el-input>
               </div>
               <div
-                class="i-b"
+                class="i-b mt10"
                 style="width:300px"
               >
+                <div class="">开团人数(人):</div>
+
                 <el-input
-                  placeholder="请输入内容"
                   v-model="temp.group_num"
+                  class="_w200"
                 >
-                  <template slot="prepend">开团人数</template>
-                  <template slot="append">人</template>
                 </el-input>
               </div>
               <div
-                class="i-b"
+                class="i-b mt10"
                 style="width:300px"
               >
+                <div class="">组团限时(小时):</div>
+
                 <el-input
-                  placeholder="请输入内容"
                   v-model="temp.group_end_time"
+                  class="_w200"
                 >
-                  <template slot="prepend">组团限时</template>
-                  <template slot="append">小时</template>
                 </el-input>
               </div>
             </div>
@@ -836,25 +836,46 @@
           if (this.type === 'basic') {
             if (this.basicEditType === 'basicEdit') {
               api.basic_goods_edit(this.modiTosendData()).then((res) => {
-                this.$message({
-                  message: res.info,
-                  type: '',
-                })
+                if (res.code == 9999) {
+
+                  this.$message({
+                    message: res.info,
+                    type: '',
+                    duration: 1300,
+                    onClose: () => {
+                      this.$router.replace(`/workbench/selfrun-manage`)
+                    },
+                  })
+                }
               })
             } else if (this.basicEditType === 'specEdit') {
               api.goods_items_edit(this.modiTosendData()).then((res) => {
-                this.$message({
-                  message: res.info,
-                  type: '',
-                })
+                if (res.code == 9999) {
+
+                  this.$message({
+                    message: res.info,
+                    type: '',
+                    duration: 1300,
+                    onClose: () => {
+                      this.$router.replace(`/workbench/selfrun-manage`)
+                    },
+                  })
+                }
               })
             }
           } else if (this.type === 'store') {
             api.goods_store_edit(this.modiTosendData()).then((res) => {
-              this.$message({
-                message: res.info,
-                type: '',
-              })
+              if (res.code == 9999) {
+
+                this.$message({
+                  message: res.info,
+                  type: '',
+                  duration: 1300,
+                  onClose: () => {
+                    this.$router.replace(`/workbench/selfrun-manage`)
+                  },
+                })
+              }
             })
           }
         }
@@ -1182,7 +1203,7 @@
       selClass() {
         this.$router.push({
           path: `./class`,
-          name:"selfrun-manage-class",
+          name: "selfrun-manage-class",
           params: {
             page: this,
             class_1: this.temp.class_1,
@@ -1250,6 +1271,12 @@
       width: 200px;
     }
 
+    .el-tabs{
+      padding-left: 2vw;
+    }
+    .el-form-item{
+      padding-left: 2vw;
+    }
     .el-tabs__content {
       // width: 80%;
     }

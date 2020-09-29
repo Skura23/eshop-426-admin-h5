@@ -16,7 +16,7 @@
     </div>
     <div class="_bot tc">
 <van-button type="primary" size="large" color="#457ac0" style="margin-top:20vw;" class="mt">提现到余额</van-button>
-<van-button type="default" size="large"  class="mt" >充值</van-button>
+<!-- <van-button type="default" size="large"  class="mt" >充值</van-button> -->
     </div>
   </div>
 </template>

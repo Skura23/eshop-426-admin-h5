@@ -18,7 +18,7 @@
         v-for="(item, idx) in dataList"
         :key="idx"
       >
-        <div>{{idx}}</div>
+        <div>{{idx+1}}</div>
         <div>
           <van-image
             width="10.9vw"

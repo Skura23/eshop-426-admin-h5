@@ -170,6 +170,10 @@
       },
       modiData() {
         this.l_allowSplit = this.staffData.is_commission == 1
+        this.l_groupid = this.staffData.group_id
+        // this.l_groupName = this.groupList.filter(v=>v.group_id==this.l_groupid)
+        this.l_groupName = this.staffData.group_name
+        
         // this.l_pos = 
       },
       modiData2() {

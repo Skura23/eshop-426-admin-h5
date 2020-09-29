@@ -6,7 +6,7 @@
       icon="balance-pay"
       value="￥ 100"
       is-link
-      to="index"
+      to="/workbench/cashout"
     />
     <van-cell
       title="营业额"

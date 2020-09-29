@@ -84,7 +84,7 @@
           // 如果无#, 重新跳转到带#地址
           if (!arr[0].includes("#")) {
             arr[0] = arr[0] + '#'
-            let url = location.origin + '/#' + location.pathname + location.search
+            let url = location.origin + location.pathname + '#' + location.search
             window.location.href = url
           } else {
             // 如果有#, 则获取code

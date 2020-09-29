@@ -88,12 +88,15 @@ let apiList = [
   "auth_estimate_detail|factory",
   // 营业额
   "factory_finance|factory",
+  // 售后管理
+  "tms_order_refund_list|order",
 
   // 聊天相关
   "auth_friend_list|factory",
   "auth_friend_log|factory",
   "auth_friend_log_create|factory",
   "auth_friend_red|factory",
+  
 ]
 
 // 调用方法: api["class_create|integral"]

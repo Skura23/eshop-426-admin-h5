@@ -151,8 +151,12 @@ function jumpTo(url){
 }
 
 
-
-function editCb(res, cb) {
+/**
+ * @param  {} res
+ * @param  {} cb
+ * @param  {} failcb
+ */
+function editCb(res, cb, failcb) {
   if (res.code == 9999) {
     Toast({
       message: res.info,
@@ -164,6 +168,7 @@ function editCb(res, cb) {
     Toast({
       message: res.info,
     })
+    failcb && failcb()
   }
 }
 

@@ -49,8 +49,15 @@
                   placeholder="请输入手机号"
                 />
                 <van-field
+                  v-model="location"
+                  label="地区"
+                  placeholder="选择地区"
+                  @click="areaPopshow=true"
+                  class=""
+                />
+                <van-field
                   v-model="info.address_info.area_detail"
-                  label="地址"
+                  label="详细地址"
                   placeholder="请输入地址"
                 />
               </van-cell-group>
@@ -68,11 +75,27 @@
         </div>
       </van-tab>
     </van-tabs>
+
+    <van-popup
+      v-model="areaPopshow"
+      position="bottom"
+      :style="{ height: '40%' }"
+    >
+      <van-area
+        title=""
+        :area-list="areaList"
+        @confirm="setArea"
+        @cancel="areaPopshow=false"
+      />
+    </van-popup>
   </div>
 </template>
 
 <script>
   import api from '@/api/api'
+  import areaList from '@/utils/area' // get token from cookie
+  import utils from '@/utils/index' // get token from cookie
+
 
   export default {
     data() {
@@ -81,8 +104,14 @@
         member_id: '',
         list: [],
         info: {
-          address_info: {}
-        }
+          address_info: {
+
+          }
+        },
+        areaCodes: {},
+        areaList,
+        areaPopshow: false,
+        location: '',
       }
 
     },
@@ -100,17 +129,47 @@
         member_id: this.member_id
       }).then((res) => {
         this.info = res.data
+        if (!this.info.address_info) {
+          this.info.address_info = {}
+        } else {
+          this.areaCodes = this.info.address_info
+          this.location = this.info.address_info.province_name +
+            this.info.address_info.city_name +
+            this.info.address_info.area_name
+        }
       })
     },
     mounted() {},
 
     methods: {
+      setArea(data) {
+        console.log(data, 'setArea');
+        this.areaCodes = {
+          province_id: data[0].code,
+          area_id: data[1].code,
+          city_id: data[2].code,
+        }
+        let str = ""
+        for (let i = 0; i < data.length; i++) {
+          const elem = data[i];
+          str += elem.name
+        }
+        this.location = str
+        this.areaPopshow = false
+      },
       save() {
         api.member_edit({
           member_id: this.member_id,
-          ...this.info
-        }).then((res) => {
+          member_name: this.info.member_name,
+          address_info: {
+            ...this.areaCodes,
+            area_detail: this.info.address_info.area_detail,
+          }
 
+        }).then((res) => {
+          utils.editCb(res, () => {
+            this.$router.go(-1)
+          })
         })
       },
     }

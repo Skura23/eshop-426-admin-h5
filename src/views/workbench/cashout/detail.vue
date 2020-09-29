@@ -103,7 +103,7 @@
     filters: {
       formatDate(date) {
         let str
-        return str = `${date.getFullYear()}年${date.getMonth()}月`
+        return str = `${date.getFullYear()}年${date.getMonth()+1}月`
       },
     },
     computed: {

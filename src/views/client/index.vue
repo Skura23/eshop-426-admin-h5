@@ -138,6 +138,8 @@
     methods: {
       sortChange() {
         console.log(this.orderOpt, 'orderOpt');
+        this.page = 1
+        this.list = []
         this.getList(this.loadListCb)
       },
       loadList() {

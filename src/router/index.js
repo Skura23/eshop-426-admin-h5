@@ -198,6 +198,15 @@ export const router = [{
           keepAlive: false,
         }
       },
+      {
+        path: 'afterSale',
+        name: 'afterSale',
+        component: () => import('@/views/workbench/afterSale'),
+        meta: {
+          title: '售后管理',
+          keepAlive: false,
+        }
+      },
     ]
   },
   {

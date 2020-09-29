@@ -63,7 +63,7 @@
       </div>
     </div>
     <div class="m-card _d1">
-      <div class="cl-blue bold font18 _tit">今日概况</div>
+      <div class="cl-blue bold font18 _tit">本月概况</div>
       <div class="_cont">
         <div class="_cell">
           <div>本月订单金额</div>
