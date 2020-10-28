@@ -99,8 +99,11 @@
                 this.$router.push(`/login?open_id=${res.data.open_id}`)
               } else if (res.data.tms_code == 3500) {
                 // 登陆成功
-                // setToken(res.data.response.token)
-                // Cookies.set('eshop-426-client-h5_userinfo', res.data.response)
+                setToken(res.data.response.token)
+                Cookies.set('eshop-426-client-h5_userinfo', {
+                  ...res.data.response,
+                  open_id: res.data.response.open_id
+                })
                 this.$router.push({
                   path: `/login/factory-list`,
                   name: "factory-list",
@@ -109,6 +112,17 @@
                     open_id: res.data.open_id,
                   }
                 })
+              } else if (res.data.code == 9999) {
+                // 登陆成功
+                setToken(res.data.response.token)
+                console.log(res.data, 'wei_xin_check_login', 'xx');
+                // alert(JSON.stringify(res.data))
+                Cookies.set('eshop-426-client-h5_userinfo', {
+                  ...res.data.response,
+                  open_id: res.data.response.open_id
+                })
+                // 获取token后刷新页面, 否则会出现其他接口无token异步执行的问题
+                this.$router.go(0)
               }
 
             })

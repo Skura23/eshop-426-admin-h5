@@ -19,6 +19,7 @@
       <van-tabbar-item
         to="/workbench/home"
         icon="chart-trending-o"
+        v-show="showWorkbench"
       >
         工作台
       </van-tabbar-item>
@@ -43,12 +44,22 @@
 </template>
 
 <script>
+  import api from '@/api/api'
+
   export default {
     name: 'TabBar',
     data() {
       return {
-        active: 0
+        active: 0,
+        showWorkbench: true,
       }
+    },
+    created() {
+      api.tms_auth_rule({}).then((res) => {
+        if (res.data.length==0) {
+          this.showWorkbench = false
+        }
+      })
     },
     methods: {
 

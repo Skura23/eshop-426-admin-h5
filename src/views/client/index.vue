@@ -62,13 +62,14 @@
             </div>
           </div>
           <div class="_bot">
+              <!-- @click="$router.push(`/home/chat?object_id=${item.member_id}`)" -->
+
             <van-row
               type="flex"
               justify="center"
               class="_row"
-              @click="$router.push(`/home/chat?object_id=${item.member_id}`)"
             >
-              <van-col
+              <!-- <van-col
                 span="12"
                 class="tc"
               >
@@ -77,9 +78,9 @@
                   size="5vw"
                 /> 发消息
               </van-col>
-              <span class="font16 cl-gray">|</span>
+              <span class="font16 cl-gray">|</span> -->
               <van-col
-                span="12"
+                span="24"
                 class="tc"
                 @click="goTel()"
               >

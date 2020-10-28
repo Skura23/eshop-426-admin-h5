@@ -120,11 +120,11 @@
         groupList: [],
         natureList: [{
             text: '正常员工',
-            value: 'plumber'
+            value: 'normal'
           },
           {
             text: '水电工',
-            value: 'normal'
+            value: 'plumber'
           },
           {
             text: '设计师',

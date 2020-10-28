@@ -96,12 +96,16 @@
               实付 ￥<span class="font16"> {{item.real_amount}}</span>
             </div>
           </div>
-          <!-- <div class="_b-b">
+          <div class="_b-b">
             <div></div>
             <div>
-              <div class="u-btn _btn1">申请退款</div>
+              <div
+                class="u-btn _btn1"
+                @click="orderCheck(item)"
+                v-if="item.refund_status==1"
+              >审核</div>
             </div>
-          </div> -->
+          </div>
         </div>
       </div>
     </van-list>
@@ -110,14 +114,15 @@
 
 <script>
   import api from '@/api/api'
+  import utils from '@/utils'
   import globals from '@/utils/globals' // get token from cookie
 
   import {
-    ImagePreview
-  } from 'vant';
-  import {
+    ImagePreview,
+    Dialog,
     Toast
   } from 'vant';
+
 
 
   export default {
@@ -156,6 +161,37 @@
     },
 
     methods: {
+      orderCheck(item) {
+        Dialog.confirm({
+            message: '是否同意退款?',
+            confirmButtonText: '同意',
+            cancelButtonText: '驳回'
+          })
+          .then(() => {
+            // on confirm
+            api.order_refund_check({
+              refund_no: item.refund_no,
+              check_status: 3
+            }).then((res) => {
+              utils.editCb(res, () => {
+                this.changeTab()
+              })
+            })
+
+          })
+          .catch(() => {
+            // on cancel
+            api.order_refund_check({
+              refund_no: item.refund_no,
+              check_status: 2
+            }).then((res) => {
+              utils.editCb(res, () => {
+                this.changeTab()
+              })
+            })
+          });
+
+      },
       clearSear() {
         this.changeTab()
       },

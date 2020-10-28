@@ -44,9 +44,8 @@
               round
               size="mini"
               class="btn-blue"
-              :disabled="item.status==2"
-              @click="freeze(item)"
-            >冻结</van-button>
+              @click="lockOrUnlock(item)"
+            >{{item.status==1?'冻结':'恢复'}}</van-button>
           </div>
           <div class="mt5">
             <van-button
@@ -67,6 +66,8 @@
 <script>
   import api from '@/api/api'
   import globals from '@/utils/globals' // get token from cookie
+  import utils from '@/utils/index' // get token from cookie
+
 
   import {
     ImagePreview
@@ -98,8 +99,18 @@
       edit(item) {
         this.$router.push(`./corp-manage/detail?type=edit&auth_id=${item.auth_id}`)
       },
-      freeze(item) {
+      lockOrUnlock(item) {
+        api.auth_change_status({
+          auth_id:item.auth_id,
+          status:item.status==1?2:1
+        }).then((res) => {
+          utils.editCb(res,() => {
+            this.page = 1
+            this.dataList = []
 
+            this.loadList()
+          })
+        })
       },
       loadList() {
         api.h5_this_auth_list({

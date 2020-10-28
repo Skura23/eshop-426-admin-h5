@@ -35,6 +35,9 @@
         :after-read="afterRead"
         @delete="deleteImg"
       />
+
+      
+      
       <div>
         <span
           class="cl-blue font16"

@@ -160,6 +160,7 @@ function editCb(res, cb, failcb) {
   if (res.code == 9999) {
     Toast({
       message: res.info,
+      duration: 1200,
       onClose() {
         cb && cb()
       },

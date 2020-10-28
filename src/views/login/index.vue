@@ -221,6 +221,8 @@
     margin-top: $mt;
   }
 
+  
+
   .login {
     position: absolute;
     width: 100%;
@@ -229,6 +231,8 @@
     background-position: center top;
     left: 0;
     top: 0;
+
+
 
     ._box {
       width: 77vw;

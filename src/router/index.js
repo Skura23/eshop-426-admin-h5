@@ -199,6 +199,16 @@ export const router = [{
         }
       },
       {
+        path: 'cashout/remainCashout',
+        name: 'cashout-remainCashout',
+        component: () => import('@/views/workbench/cashout/remainCashout'),
+        meta: {
+          title: '提现',
+          keepAlive: false,
+        }
+      },
+      
+      {
         path: 'afterSale',
         name: 'afterSale',
         component: () => import('@/views/workbench/afterSale'),
@@ -232,6 +242,15 @@ export const router = [{
     }
   },
   {
+    path: '/my/qr',
+    name: 'my-qr',
+    component: () => import('@/views/my/qr'),
+    meta: {
+      title: '名片码',
+      keepAlive: false,
+    }
+  },
+  {
     path: '/my/cash',
     name: 'my',
     component: () => import('@/views/my/cash'),
@@ -256,6 +275,34 @@ export const router = [{
     meta: {
       title: '推广商品',
       keepAlive: false,
+    }
+  },
+  {
+    path: '/my/cashoutbind',
+    name: 'my',
+    component: () => import('@/views/my/cashoutbind'),
+    meta: {
+      title: '提现绑定',
+      keepAlive: false,
+    }
+  },
+  {
+    path: '/my/cashoutbind',
+    name: 'my',
+    component: () => import('@/views/my/cashoutbind'),
+    meta: {
+      title: '提现绑定',
+      keepAlive: false,
+    }
+  },
+  {
+    path: '/my/card-edit',
+    name: 'my-card-edit',
+    component: () => import('@/views/my/card-edit'),
+    meta: {
+      title: '名片编辑',
+      keepAlive: false,
+      noTopbar: false
     }
   },
   {

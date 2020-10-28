@@ -1,6 +1,6 @@
 <!-- home -->
 <template>
-  <div class="app-container page-banchuan-detail">
+  <div class="app-container page-banchuan-detail font14">
     <van-swipe
       :loop="false"
       :width="'100vw'"
@@ -73,11 +73,11 @@
             <div>官方指导</div>
             <div
               style="color:red "
-              class="mt5 font12"
+              class="mt5 "
             >售价：￥{{goodsData.official_price}}</div>
-            <div class="font10 mt5">客户推广佣金：￥{{goodsData.official_member_commission}}</div>
-            <div class="font10">水电推广佣金：￥{{goodsData.official_plumber_commission}}</div>
-            <div class="font10">设计师推广佣金：￥{{goodsData.official_stylist_commission}}</div>
+            <div class=" mt5">客户推广佣金：￥{{goodsData.official_member_commission}}</div>
+            <div class="mt5">水电推广佣金：￥{{goodsData.official_plumber_commission}}</div>
+            <div class="mt5">设计师推广佣金：￥{{goodsData.official_stylist_commission}}</div>
           </div>
         </div>
         <p class="font16">
@@ -101,39 +101,43 @@
                 >{{item.option_name}}</span>
               </van-col>
               <van-col span="9">
-                <div>官方指导</div>
+                <div></div>
                 <div
                   style="color:red "
-                  class="mt5 font12"
+                  class="mt5 "
                 >售价：￥{{item.official_price}}</div>
-                <div class="font10 mt5">客户推广佣金：￥{{item.official_member_commission}}</div>
-                <div class="font10 mt5">水电推广佣金：￥{{item.official_plumber_commission}}</div>
-                <div class="font10 mt5">设计师推广佣金：￥{{item.official_stylist_commission}}</div>
+                <div class=" mt5">客户推广佣金：￥{{item.official_member_commission}}</div>
+                <div class=" mt5">水电推广佣金：￥{{item.official_plumber_commission}}</div>
+                <div class=" mt5">设计师推广佣金：￥{{item.official_stylist_commission}}</div>
               </van-col>
               <van-col span="9">
                 <div>本店设置</div>
                 <div
                   style="color:red "
-                  class="mt5 font12"
-                >售价：￥{{item.market_price}}</div>
-                <div class="font10 mt5">
+                  class="mt5 "
+                >售价: <input
+                    type="text"
+                    placeholder=""
+                    v-model="item.price"
+                  ></div>
+                <div class=" mt5">
                   <input
                     type="text"
-                    placeholder="客户推广佣金"
+                    placeholder=""
                     v-model="item.member_commission"
                   >
                 </div>
-                <div class="font10 mt5">
+                <div class=" mt5">
                   <input
                     type="text"
-                    placeholder="水电推广佣金"
+                    placeholder=""
                     v-model="item.plumber_commission"
                   >
                 </div>
-                <div class="font10 mt5">
+                <div class=" mt5">
                   <input
                     type="text"
-                    placeholder="设计师推广佣金"
+                    placeholder=""
                     v-model="item.stylist_commission"
                   >
                 </div>
@@ -165,59 +169,61 @@
             fit="cover"
             :src="goodsData.goods_image[0]"
           />
-          
+
         </div>
-        
+
         <div class="_m mt10">
 
-          <div
-            class="_row"
-          >
-            <van-row>
+          <div class="_row">
+            <van-row gutter="1vw"> 
               <van-col
-                span="9"
-                class="tc"
+                span="12"
+                class=""
               >
                 <div>官方指导</div>
                 <div
                   style="color:red "
-                  class="mt5 font12"
+                  class="mt10 "
                 >售价：￥{{goodsData.official_price}}</div>
-                <div class="font10 mt5">客户推广佣金：￥{{goodsData.official_member_commission}}</div>
-                <div class="font10 mt5">水电推广佣金：￥{{goodsData.official_plumber_commission}}</div>
-                <div class="font10 mt5">设计师推广佣金：￥{{goodsData.official_stylist_commission}}</div>
+                <div class="mt10 ">客户推广佣金：￥{{goodsData.official_member_commission}}</div>
+                <div class="mt10 ">水电推广佣金：￥{{goodsData.official_plumber_commission}}</div>
+                <div class="mt10 ">设计师推广佣金：￥{{goodsData.official_stylist_commission}}</div>
               </van-col>
-              <van-col span="9">
+              <van-col span="12">
                 <div>本店设置</div>
                 <div
                   style="color:red "
-                  class="mt5 font12"
-                >售价：￥{{goodsData.market_price}}</div>
-                <div class="font10 mt5">
-                  <input
+                  class="mt10 "
+                >
+                  售价: <input
                     type="text"
-                    placeholder="客户推广佣金"
+                    placeholder=""
+                    v-model="goodsData.price"
+                  >
+                </div>
+                <div class="mt10 ">
+                  客户推广佣金: <input
+                    type="text"
+                    placeholder=""
                     v-model="goodsData.member_commission"
                   >
                 </div>
-                <div class="font10 mt5">
-                  <input
+                <div class="mt10 ">
+                  水电推广佣金: <input
                     type="text"
-                    placeholder="水电推广佣金"
+                    placeholder=""
                     v-model="goodsData.plumber_commission"
                   >
                 </div>
-                <div class="font10 mt5">
-                  <input
+                <div class="mt10 ">
+                  设计师推广佣金: <input
                     type="text"
-                    placeholder="设计师推广佣金"
+                    placeholder=""
                     v-model="goodsData.stylist_commission"
                   >
                 </div>
               </van-col>
-              <van-col span="6">
-                
-              </van-col>
+
             </van-row>
           </div>
         </div>
@@ -314,6 +320,19 @@
 </script>
 <style lang="scss">
   .app-container.page-banchuan-detail {
+    .van-col--12 {
+      width: 50%;
+      // padding: 0 4.5vw;
+      div{
+        height: 5.3vw;
+        line-height: 5.3vw;
+        input{
+          width: 14.5vw;
+          height: 4vw;
+        }
+      }
+    }
+
     .van-swipe-item {
       height: 100vw;
     }
@@ -357,17 +376,16 @@
       ._m {
         border-top: 1px solid #ffeaea;
         border-bottom: 1px solid #ffeaea;
-        height: 50vw;
+        // height: 50vw;
         overflow-y: scroll;
 
         ._row {
-          padding: 3.5vw 0;
+          padding: 3.5vw 2.5vw;
           border-bottom: 1px solid #ffeaea;
-
-          input {
-            width: 27.6vw;
-            height: 2.6vw;
-          }
+          // input {
+          //   width: 27.6vw;
+          //   height: 3.9vw;
+          // }
         }
       }
 

@@ -5,6 +5,7 @@
       <van-dropdown-item
         v-model="tradeType"
         :options="tradeTypeOpts"
+        @change="typeOptChange"
       />
     </van-dropdown-menu>
     <div class="_1">
@@ -19,7 +20,7 @@
         <van-icon name="arrow-down" />
       </div>
       <div class="_2_1 mt10 font12 cl-gray">
-        支出¥1110.63 收入¥8769.77
+        支出¥{{dataset.in}} 收入¥{{dataset.out}}
       </div>
     </div>
     <div class="_3">
@@ -32,14 +33,14 @@
       >
         <div
           class="_card bb"
-          v-for="(item, index) in 3"
+          v-for="(item, index) in dataList"
           :key="index"
         >
           <div class="font16 clearfix">
-            <div class="fl">扫二维码付款-某某店</div>
-            <div class="fr">-20.00</div>
+            <div class="fl">{{item.remark}}</div>
+            <div class="fr">{{item.amount}}</div>
           </div>
-          <div class="font12 cl-gray mt10">4月27日 08:55</div>
+          <div class="font12 cl-gray mt10">{{item.add_time}}</div>
         </div>
       </van-list>
     </div>
@@ -71,18 +72,18 @@
   export default {
     data() {
       return {
-        tradeType: 0,
+        tradeType: '',
         tradeTypeOpts: [{
-            text: '全部商品',
-            value: 0
+            text: '全部类型',
+            value: ''
           },
           {
-            text: '新款商品',
-            value: 1
+            text: '订单',
+            value: 'order'
           },
           {
-            text: '活动商品',
-            value: 2
+            text: '提现',
+            value: 'cash'
           },
         ],
         dateData: {
@@ -97,6 +98,8 @@
         total: 0,
         listLoading: false,
         listFinished: false,
+        dataset: {},
+        
       }
 
     },
@@ -115,9 +118,11 @@
     mounted() {},
 
     methods: {
+
       confirmDate(val) {
         this.popShow = false;
         this.dateData.currentDate = val
+        this.typeOptChange()
       },
       typeOptChange(val) {
         this.page = 1
@@ -133,14 +138,17 @@
         return val;
       },
       loadList() {
-        api.find_cases_list({
-          page: this.page
+        console.log(Number(this.dateData.currentDate), 'this.dateData.currentDate');
+        api.auth_account_detail({
+          page: this.page,
+          month: utils.getFormattedDate(Number(this.dateData.currentDate)/1000, true).slice(0, -3),
+          order_type: this.tradeType
         }).then((res) => {
           // loadListCb(res) {
           if (res.code == 9999) {
             this.page++
             this.total = res.data.total
-
+            this.dataset = res.data
             this.dataList = this.dataList.concat(res.data.list)
 
             // 加载状态结束

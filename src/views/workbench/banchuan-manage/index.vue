@@ -19,7 +19,8 @@
     >
       <van-card
         num=""
-        :price="item.market_price"
+        :price="item.price_show"
+        :origin-price="item.market_price"
         desc=""
         :title="item.goods_name"
         :thumb="item.goods_image[0]"

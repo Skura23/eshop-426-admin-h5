@@ -86,17 +86,29 @@ let apiList = [
   "auth_account|factory",
   "auth_account_detail|factory",
   "auth_estimate_detail|factory",
+  "auth_factory_code|factory",
+  "auth_factory_card|factory",
+  "factory_balance|factory",
   // 营业额
   "factory_finance|factory",
   // 售后管理
   "tms_order_refund_list|order",
+  "order_refund_check|order",
 
   // 聊天相关
   "auth_friend_list|factory",
   "auth_friend_log|factory",
   "auth_friend_log_create|factory",
   "auth_friend_red|factory",
-  
+
+  // 其他
+  "auth_change_status|factory",
+  "factory_withdraw|factory",
+  "send_phone_message|factory",
+  "bind_shop|factory",
+  "tms_auth_rule|factory",
+  "card_detail|card",
+  "card_edit|card",
 ]
 
 // 调用方法: api["class_create|integral"]

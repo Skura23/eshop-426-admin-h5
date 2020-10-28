@@ -3,31 +3,31 @@
   <div class="app-container page-my-cash">
     <div class="m-card mt _wra">
       <p class="font12 cl-gray">
-        累计佣金（元）
+        可提现余额（元）
       </p>
       <div class="_0 mt">
         <span class="font20">
-          {{dataset.account}}
+          {{dataset.available_amount}}
         </span>
-        <span
+        <!-- <span
           class="cl-blue"
           @click="$router.push('/workbench/cashout/detail')"
         >
           收支明细
-        </span>
+        </span> -->
       </div>
       <van-divider />
       <div class="_1 cl-gray">
-        <span>已提现¥{{dataset.withdraw}}</span>
-        <span class="ml">预估收入¥{{dataset.amount}}</span>
+        <span>冻结余额¥{{dataset.pending_amount}}</span>
       </div>
-      <!-- <div class="_2 mt">
+      <div class="_2 mt">
         <van-button
           round
           type="info"
           size="large"
+          @click="cashout"
         >提现</van-button>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
@@ -51,13 +51,21 @@
 
     computed: {},
     created() {
-      api.auth_account({}).then((res) => {
+      api.factory_balance({}).then((res) => {
         this.dataset = res.data
       })
     },
     mounted() {},
 
-    methods: {}
+    methods: {
+      cashout(){
+    api.factory_withdraw({
+      amount: this.dataset.available_amount
+    }).then((res) => {
+        utils.editCb(res)
+      })
+  },
+    }
   }
 </script>
 

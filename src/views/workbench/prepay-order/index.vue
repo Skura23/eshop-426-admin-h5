@@ -92,14 +92,29 @@
               {{item.member_name}}的订单
             </div>
             <div class="_b-t-r">
-              实付 ￥<span class="font16"> {{item.real_amount}}</span>
+              实付 ￥<span class=""> {{item.pay_amount}}</span>
             </div>
+          </div>
+          <div
+            class=""
+            style="text-align:right"
+          >
+            总价 ￥ {{item.real_amount}}
+
+
+          </div>
+          <div
+            class=""
+            style="text-align:right"
+          >
+
+            待付尾款 ￥ {{item.make_up_amount}}
           </div>
           <div class="_b-b">
             <div></div>
-            <div>
+            <!-- <div>
               <div class="u-btn _btn1">申请退款</div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -242,9 +257,11 @@
           p {
             margin: 0;
             margin-top: 2.2vw;
-            &._p0{
+
+            &._p0 {
               @include textoverflow(2);
             }
+
             &._p1,
             &._p2 {
               opacity: 0.7;
@@ -262,8 +279,7 @@
           text-align: right;
           @include flexbox();
 
-          span {
-          }
+          span {}
         }
 
         ._b-b {
